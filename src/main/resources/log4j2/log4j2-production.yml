@@ -4,6 +4,8 @@ Configutation:
     property: 
     - name: appname
       value: Spring-Boot-Gradle-Boilerplate
+    - name: filename
+      value: logs/app.log
 
   Appenders: 
 
