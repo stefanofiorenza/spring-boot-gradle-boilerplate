@@ -38,3 +38,17 @@ If you need to run the application with different deployment environment propert
 ```
 SPRING_PROFILES_ACTIVE=production ./gradlew bootRun
 ```
+
+### Build and run using Docker
+1. Build the docker image.
+```
+docker build \
+    --build-arg JAR_FILE=Spring-Boot-Gradle-Boilerplate-0.0.1-SNAPSHOT.jar \
+    -t spring-boot-gradle-boilerplate:0.0.1-SNAPSHOT \
+    .
+```
+
+2. Run the application in docker container.
+```
+docker run --rm -p 8080:8080 spring-boot-gradle-boilerplate:0.0.1-SNAPSHOT
+```
