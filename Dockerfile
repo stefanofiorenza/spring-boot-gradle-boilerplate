@@ -19,6 +19,8 @@ RUN ./gradlew build
 # Package stage
 FROM openjdk:8-jre-alpine
 
+RUN apk --update --no-cache add bash curl && rm -rf /var/cache/apk/*
+
 VOLUME /tmp
 
 ARG JAR_FILE
@@ -30,5 +32,7 @@ WORKDIR ${APP_HOME}
 COPY --from=BUILDER ${APP_HOME}/build/libs/${JAR_FILE} app.jar
 
 EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 CMD curl -f http://localhost:8080/actuator/health 2>&1 || exit 1
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
