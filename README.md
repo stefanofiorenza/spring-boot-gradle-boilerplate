@@ -20,7 +20,7 @@ This boilerplate comes bundled with the following features:
 
 1. Clone the repository.
 ```
-git clone https://github.com/ibipn/spring-boot-gradle-boilerplate.git
+git clone https://github.com/bipinthite/spring-boot-gradle-boilerplate.git
 cd spring-boot-gradle-boilerplate/
 ```
 
