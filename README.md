@@ -2,12 +2,12 @@
 A boilerplate which uses Spring Boot 2 and Gradle
 
 ## Prerequisites
-* Gradle 4 +
-* JDK 8 +
+* Gradle 6 +
+* JDK 11 +
 
 ## Features
 This boilerplate comes bundled with the following features:
-1. Spring Boot Starter Web (version 2.0.4)
+1. Spring Boot Starter Web (version 2.3.2)
 2. [Undertow web server](http://undertow.io/), replacing the default Tomcat server
 3. [Spring Actuator](https://spring.io/guides/gs/actuator-service/) for health and metrics
 4. [Log4j2](https://logging.apache.org/log4j/2.x/) for better control over logging
