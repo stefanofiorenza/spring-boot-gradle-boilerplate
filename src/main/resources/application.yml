@@ -2,23 +2,32 @@
 
 server: 
   port: 8080
+  servlet:
+    context-path: /api/example
 
 logbook: 
   include: 
-    - /api/**
+    - /api/example/**
   exclude: 
-    - /actuator/**
+    - /api/example/actuator/**
   write: 
     level: INFO
-  max-body-size: 20
-  format: 
-    style: http
-  obfuscate: 
-    headers: 
+  filter.enabled: true
+  secure-filter.enabled: true
+  format.style: http
+  strategy: body-only-if-status-at-least
+  minimum-status: 400
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Secret
       - token
-    parameters: 
-      - email
+    parameters:
+      - access_token
       - password
+      - email
+    write:
+      chunk-size: 1000
 
 # Middleware configuration
 middleware: 
@@ -32,6 +41,7 @@ middleware:
 # Default configuration
 
 spring:
+
   profiles: default
 
 # Logging
@@ -43,12 +53,15 @@ logging:
 # Production configuration
 
 spring:
+
   profiles: production
+
+  main:
+    banner-mode: off
 
 # Logging
 logging: 
   config: classpath:log4j2/log4j2-production.yml
 
 logbook: 
-  format: 
-    style: json
+  format.style: json
