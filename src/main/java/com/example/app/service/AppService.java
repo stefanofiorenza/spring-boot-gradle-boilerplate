@@ -1,21 +1,23 @@
 package com.example.app.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author https://github.com/ibipn
  *
  */
 @Service
+@Slf4j
 public class AppService {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(AppService.class);
-
   public String sayHello() {
-    LOGGER.trace("Enter: sayHello()");
-    return "Hello World 2!";
+    log.trace("Enter: sayHello()");
+    boolean dummyError = System.currentTimeMillis() % 2 == 0;
+    if (dummyError) {
+      throw new RuntimeException("Something went wrong!");
+    }
+    return "Hello World!";
   }
 
 }
